@@ -2,10 +2,36 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{/fragments/resources :: headResources('Index')}"></head>
 <body>
-    <h1 class="text-center text-danger fw-bolder text-decoration-underline">Pizza</h1>
+    <h1 class="text-center text-danger fw-bolder text-decoration-underline pt-4">Lista delle Pizze</h1>
 
     <div class="container">
+        <div class="d-flex justify-content-between flex-wrap">
+            <!-- Se non presente nessuna pizza mostra messaggio -->
+            <th:block th:if="${#lists.isEmpty(pizzaList)}">
+                <p>Nessuna pizza presente nell'applicazione.</p>
+            </th:block>
 
+            <!-- se pizze presenti mostra le card -->
+            <div class="card mx-2 my-5" th:each="pizza : ${pizzaList}" th:object="${pizza}" style="width:380px">
+                <img th:src="*{imageURL}" alt="pizzaIMG" class="card-img-top" style="height:300px">
+                <div class="card-body">
+                    <h5 th:text="*{name}"></h5>
+                    <p class="card-text">
+                        <span>Descrizione: </span>
+                        <span th:text="*{description}"></span>
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <span th:text="'Prezzo: ' + *{price} + ' €'"></span>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
