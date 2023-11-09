@@ -22,7 +22,6 @@ public class Pizza {
     private LocalDateTime createdAt;
 
     // Getter e setter
-
     public Integer getId() {
         return id;
     }
