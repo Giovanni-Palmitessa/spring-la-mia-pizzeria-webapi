@@ -18,7 +18,7 @@ public class PizzaController {
     private PizzaRepository pizzaRepository;
 
     // Homepage
-    @GetMapping("home")
+    @GetMapping("/home")
     public String homePage(Model model){
         String home = "Sono la Homepage";
         model.addAttribute("homePage", home);
