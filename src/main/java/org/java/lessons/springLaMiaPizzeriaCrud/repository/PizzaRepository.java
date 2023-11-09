@@ -1,4 +1,7 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.repository;
 
-public interface PizzaRepository {
+import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PizzaRepository  extends JpaRepository<Pizza, Integer> {
 }
