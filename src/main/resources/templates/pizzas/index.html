@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{/fragments/resources :: headResources('Index')}"></head>
 <body>
+    <nav th:replace="~{/fragments/navbar :: topNavbar('pizzas')}"></nav>
+
     <h1 class="text-center text-danger fw-bolder text-decoration-underline pt-4">Lista delle Pizze</h1>
 
     <div class="container">
