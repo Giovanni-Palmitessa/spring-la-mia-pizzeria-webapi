@@ -21,6 +21,11 @@ public class PizzaController {
     @Autowired
     private PizzaRepository pizzaRepository;
 
+    @GetMapping
+    public String home() {
+        return "redirect:/home";
+    }
+
     // Homepage
     @GetMapping("/home")
     public String homePage(Model model){
