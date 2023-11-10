@@ -2,16 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{/fragments/resources :: headResources('Show')}"></head>
 <body>
+<!--NAVBAR-->
 <nav th:replace="~{/fragments/navbar :: topNavbar('pizzas')}"></nav>
+
+<!--MAIN-->
     <div class="container" th:object="${pizza}">
+<!-- TITOLO -->
         <h1 class="text-center text-danger fw-bolder text-decoration-underline pt-4" th:text="*{name}"></h1>
 
         <div class="d-flex justify-content-center pt-2">
             <a th:href="@{/pizzas}" class="text-primary-emphasis fw-semibold fs-5"><-- Back to results</a>
         </div>
-
+<!--    CARD PIZZA -->
         <div class="d-flex justify-content-center">
-            <div class="card text-bg-dark w-75 my-5" style="height:700px">
+            <div class="card text-bg-dark w-75 my-5">
                 <img th:src="*{imageURL}" alt="pizzaIMG" class="card-img h-100">
                 <div class="card-img-overlay">
                     <div class="bg-dark p-3 bg-opacity-75 rounded-5">

@@ -2,9 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{/fragments/resources :: headResources('Index')}"></head>
 <body>
+<!-- NAVBAR -->
     <nav th:replace="~{/fragments/navbar :: topNavbar('pizzas')}"></nav>
 
+<!--MAIN -->
     <div class="container">
+<!-- TITOLO CON SEARCHBAR -->
         <div class="d-flex align-items-center justify-content-between pt-5">
             <h1 class="text-danger fw-bolder text-decoration-underline">Lista delle Pizze</h1>
             <form th:action="@{/pizzas}" method="get">
