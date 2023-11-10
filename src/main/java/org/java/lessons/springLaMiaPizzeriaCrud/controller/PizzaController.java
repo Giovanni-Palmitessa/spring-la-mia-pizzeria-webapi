@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -36,10 +37,25 @@ public class PizzaController {
 
     // Mapping che prende e ci mostra lista pizze
     @GetMapping("/pizzas")
+    /* senza ricerca
     public String index(Model model) {
 
         List<Pizza> pizzaList = pizzaRepository.findAll();
         model.addAttribute("pizzaList", pizzaList);
+        return "pizzas/index";
+    }*/
+    public String index(@RequestParam(name = "search") Optional<String> search , Model model) {
+        List<Pizza> pizzaList;
+        // se il parametro di ricerca è presente filtro la lista delle pizze
+        if (search.isPresent()) {
+            pizzaList = pizzaRepository.findByNameContainingIgnoreCase(search.get());
+            // altrimenti prendo tutti i libri non filtrati
+        } else {
+            pizzaList = pizzaRepository.findAll();
+        }
+        // passo al template la lista delle pizze
+        model.addAttribute("pizzaList", pizzaList);
+        model.addAttribute("searchKeyword", search.orElse(""));
         return "pizzas/index";
     }
 
