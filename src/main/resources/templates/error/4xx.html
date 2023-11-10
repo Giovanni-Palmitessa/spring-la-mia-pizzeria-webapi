@@ -4,10 +4,20 @@
 <body>
 <!-- NAVBAR -->
 <nav th:replace="~{/fragments/navbar :: topNavbar('pizzas')}"></nav>
-<div class="container">
+
+<div class="container">                                                                                        
     <h1>I CANNOT RESPOND YOUR REQUEST</h1>
+
     <div th:insert="~{/fragments/resources :: errorDetails}"></div>
-    <a th:href="@{/}" class="btn btn-primary">Go back to home</a>
+
+    <div class="d-flex justify-content-center mb-4" style="height:600px">
+      <img src="https://cdn2.vectorstock.com/i/1000x1000/13/96/gloomy-face-slice-pizza-cartoon-with-404-boards-vector-35431396.jpg" alt="Pizza not found" class="h-100">
+    </div>
+
+    <div class="d-flex justify-content-center">
+       <a th:href="@{/}" class="btn btn-primary">Go back to home</a>
+    </div>
+
 </div>
 </body>
 </html>
