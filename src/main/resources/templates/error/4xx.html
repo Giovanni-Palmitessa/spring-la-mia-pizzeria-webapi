@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{/fragments/resources :: headResources('Error')}"></head>
 <body>
+<!-- NAVBAR -->
+<nav th:replace="~{/fragments/navbar :: topNavbar('pizzas')}"></nav>
 <div class="container">
     <h1>I CANNOT RESPOND YOUR REQUEST</h1>
     <div th:insert="~{/fragments/resources :: errorDetails}"></div>
