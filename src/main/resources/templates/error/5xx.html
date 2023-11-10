@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{/fragments/resources :: headResources('Error')}"></head>
+<body>
+<!-- NAVBAR -->
+<nav th:replace="~{/fragments/navbar :: topNavbar('pizzas')}"></nav>
+
+<div class="container">
+    <h1 class="text-center mt-4">OOOOPS AN ERROR OCCURRED</h1>
+
+    <div th:insert="~{/fragments/resources :: errorDetails}"></div>
+
+    <div class="d-flex justify-content-center mb-4" style="height:600px">
+        <img src="https://img.freepik.com/vector-premium/ilustracion-personaje-pizza-error-404_309278-13947.jpg" alt="Pizza not found" class="h-100">
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <a th:href="@{/}" class="btn btn-primary">Go back to home</a>
+    </div>
+
+</div>
+</body>
+</html>
