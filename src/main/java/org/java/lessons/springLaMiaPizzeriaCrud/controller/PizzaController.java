@@ -77,7 +77,7 @@ public class PizzaController {
     }
 
     // Metodo che mostra il form di creazione della pizza
-    @GetMapping("/create")
+    @GetMapping("/pizzas/create")
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
         return "pizzas/create";
