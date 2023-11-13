@@ -1,6 +1,7 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -26,6 +27,7 @@ public class Pizza {
     private String imageURL;
     @Column(nullable = false)
     @NotNull(message = "Il numero non può essere nullo!")
+    @Min(value = 1, message = "Il prezzo non può essere inferiore a 1 €!")
     private double price;
     private LocalDateTime createdAt;
 
