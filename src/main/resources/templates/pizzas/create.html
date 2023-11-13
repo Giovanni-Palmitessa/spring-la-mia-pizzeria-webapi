@@ -7,10 +7,10 @@
     <h1 class="text-danger fw-bolder text-decoration-underline py-4">Crea nuova pizza</h1>
     <hr>
     <form
-        th:action="@{/pizzas/create}"
+        th:action="@{/pizzas/store}"
         th:object="${pizza}"
         method="post"
-        class="row gy-2">
+        class="row gy-2" novalidate>
         <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Nome', 'name')}"></div>
         <div class="col-6" th:insert="~{fragments/components :: formField('text', 'URL Immagine', 'imageURL')}"></div>
         <div class="col-6" th:insert="~{fragments/components :: formField('number', 'Prezzo', 'price')}"></div>

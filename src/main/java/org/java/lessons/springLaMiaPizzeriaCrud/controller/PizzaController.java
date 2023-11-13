@@ -84,7 +84,7 @@ public class PizzaController {
     }
 
     //metodo post per il create che salva le informazioni del form
-    @PostMapping("/create")
+    @PostMapping("/pizzas/store")
     public String storePizza(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult){
         // validare che i dati siano corretti
         if (bindingResult.hasErrors()){
