@@ -24,6 +24,7 @@ public class PizzaController {
 
     @GetMapping
     public String home() {
+//        throw new RuntimeException("FORCE ERROR"); serve per forzare errori
         return "redirect:/home";
     }
 
