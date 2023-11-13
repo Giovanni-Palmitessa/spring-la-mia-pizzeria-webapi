@@ -2,6 +2,7 @@ package org.java.lessons.springLaMiaPizzeriaCrud.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 
@@ -24,6 +25,7 @@ public class Pizza {
     @URL(message = "Il link deve essere un URL valido!")
     private String imageURL;
     @Column(nullable = false)
+    @NotNull(message = "Il numero non può essere nullo!")
     private double price;
     private LocalDateTime createdAt;
 
