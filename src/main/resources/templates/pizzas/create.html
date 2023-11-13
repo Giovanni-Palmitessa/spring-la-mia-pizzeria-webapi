@@ -6,9 +6,9 @@
 <div class="container">
     <h1 class="text-danger fw-bolder text-decoration-underline py-4">Create pizza</h1>
     <hr>
-    <!--<form
-        th:action="@{/books/create}"
-        th:object="${book}"
+    <form
+        th:action="@{/pizzas/create}"
+        th:object="${pizza}"
         method="post"
         class="row gy-2">
         <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Title', 'title')}"></div>
@@ -24,7 +24,7 @@
             <button class="btn btn-primary" type="submit">Save</button>
             <a th:href="@{/books}" class="btn btn-primary">Cancel</a>
         </div>
-    </form>-->
+    </form>
 </div>
 </body>
 </html>
