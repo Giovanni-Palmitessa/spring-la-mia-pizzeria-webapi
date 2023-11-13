@@ -1,17 +1,17 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.controller;
 
+import jakarta.validation.Valid;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,5 +81,20 @@ public class PizzaController {
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
         return "pizzas/create";
+    }
+
+    //metodo post per il create che salva le informazioni del form
+    @PostMapping("/create")
+    public String storePizza(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult){
+        // validare che i dati siano corretti
+        if (bindingResult.hasErrors()){
+            // ci sono errori devo ricaricare il form
+            return "pizzas/create";
+        }
+        // setto il timestamp di creazione
+        formPizza.setCreatedAt(LocalDateTime.now());
+        // se i dati sono corretti salvo il libro su database
+        Pizza savedPizza = pizzaRepository.save(formPizza);
+        return "redirect:/pizzas/show/" + savedPizza.getId();
     }
 }
