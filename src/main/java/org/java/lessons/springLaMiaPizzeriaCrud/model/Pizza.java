@@ -3,6 +3,7 @@ package org.java.lessons.springLaMiaPizzeriaCrud.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
 
 import java.time.LocalDateTime;
 
@@ -20,6 +21,7 @@ public class Pizza {
     @Lob
     private String description;
     @Lob
+    @URL(message = "Il link deve essere un URL valido!")
     private String imageURL;
     @Column(nullable = false)
     private double price;
