@@ -1,6 +1,8 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +14,8 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(nullable = false)
+    @NotBlank(message = "Il titolo non può essere un campo vuoto!")
+    @Size(max = 255, message = "Il titolo deve essere < di 255 caratteri!")
     private String name;
     @Lob
     private String description;
