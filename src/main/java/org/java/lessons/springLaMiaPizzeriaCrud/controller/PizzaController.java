@@ -75,4 +75,11 @@ public class PizzaController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
         }
     }
+
+    // Metodo che mostra il form di creazione della pizza
+    @GetMapping("/create")
+    public String create(Model model) {
+        model.addAttribute("pizza", new Pizza());
+        return "pizzas/create";
+    }
 }
