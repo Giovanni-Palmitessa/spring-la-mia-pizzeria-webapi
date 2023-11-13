@@ -4,25 +4,24 @@
 <body>
 <nav th:replace="~{fragments/navbar :: topNavbar('pizzas')}"></nav>
 <div class="container">
-    <h1 class="text-danger fw-bolder text-decoration-underline py-4">Create pizza</h1>
+    <h1 class="text-danger fw-bolder text-decoration-underline py-4">Crea nuova pizza</h1>
     <hr>
     <form
         th:action="@{/pizzas/create}"
         th:object="${pizza}"
         method="post"
         class="row gy-2">
-        <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Title', 'title')}"></div>
-        <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Authors', 'authors')}"></div>
-        <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Publisher', 'publisher')}"></div>
-        <div class="col-4" th:insert="~{fragments/components :: formField('text', 'ISBN', 'isbn')}"></div>
-        <div class="col-2" th:insert="~{fragments/components :: formField('number', 'Year of Publication', 'year')}"></div>
+        <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Nome', 'name')}"></div>
+        <div class="col-6" th:insert="~{fragments/components :: formField('text', 'URL Immagine', 'imageURL')}"></div>
+        <div class="col-6" th:insert="~{fragments/components :: formField('number', 'Prezzo', 'price')}"></div>
         <div class="col-12">
-            <label for="synopsis" class="form-label">Synopsis</label>
-            <textarea class="form-control" id="synopsis" th:field="*{synopsis}" rows="3"></textarea>
+            <label for="description" class="form-label">Descrizione</label>
+            <textarea class="form-control" id="description" th:field="*{description}" rows="3"></textarea>
         </div>
+
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Save</button>
-            <a th:href="@{/books}" class="btn btn-primary">Cancel</a>
+            <button class="btn btn-primary" type="submit">Salva</button>
+            <a th:href="@{/books}" class="btn btn-primary">Torna indietro</a>
         </div>
     </form>
 </div>
