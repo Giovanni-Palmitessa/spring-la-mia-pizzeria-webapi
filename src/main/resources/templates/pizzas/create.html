@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{/fragments/resources :: headResources('Create Pizza')}"></head>
+<body>
+<nav th:replace="~{fragments/navbar :: topNavbar('pizzas')}"></nav>
+<div class="container">
+    <h1>Create pizza</h1>
+    <hr>
+    <!--<form
+        th:action="@{/books/create}"
+        th:object="${book}"
+        method="post"
+        class="row gy-2">
+        <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Title', 'title')}"></div>
+        <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Authors', 'authors')}"></div>
+        <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Publisher', 'publisher')}"></div>
+        <div class="col-4" th:insert="~{fragments/components :: formField('text', 'ISBN', 'isbn')}"></div>
+        <div class="col-2" th:insert="~{fragments/components :: formField('number', 'Year of Publication', 'year')}"></div>
+        <div class="col-12">
+            <label for="synopsis" class="form-label">Synopsis</label>
+            <textarea class="form-control" id="synopsis" th:field="*{synopsis}" rows="3"></textarea>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <a th:href="@{/books}" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>-->
+</div>
+</body>
+</html>
