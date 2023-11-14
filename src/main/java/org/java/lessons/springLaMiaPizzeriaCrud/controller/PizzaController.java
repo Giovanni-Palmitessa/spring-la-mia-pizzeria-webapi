@@ -86,7 +86,7 @@ public class PizzaController {
 
     //metodo post per il create che salva le informazioni del form
     @PostMapping("/pizzas/store")
-    public String storePizza(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult){
+    public String storePizza(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         // validare che i dati siano corretti
         if (bindingResult.hasErrors()){
             // ci sono errori devo ricaricare il form
@@ -96,6 +96,7 @@ public class PizzaController {
         formPizza.setCreatedAt(LocalDateTime.now());
         // se i dati sono corretti salvo il libro su database
         Pizza savedPizza = pizzaRepository.save(formPizza);
+        redirectAttributes.addFlashAttribute("message", "La " + savedPizza.getName() + " è stata creata con successo!");
         return "redirect:/pizzas/show/" + savedPizza.getId();
     }
 
