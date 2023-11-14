@@ -107,10 +107,10 @@ public class PizzaController {
             // aggiungo la pizza come attributo del Model
             model.addAttribute("pizza", result.get());
             //proseguo a restituire la pagina di modifica
-            return "/books/edit";
+            return "/pizzas/edit";
         } else {
             // sollevo un'eccezione cin HttpStatus 404
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Il libro con id " + id + " non trovato!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "La pizza con id " + id + " non trovato!");
         }
     }
 }
