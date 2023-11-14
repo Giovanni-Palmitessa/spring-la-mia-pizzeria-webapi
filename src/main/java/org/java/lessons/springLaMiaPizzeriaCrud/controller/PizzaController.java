@@ -113,4 +113,26 @@ public class PizzaController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "La pizza con id " + id + " non trovato!");
         }
     }
+
+    // metodo che riceve il submit del form di edit e salva il libro
+    @PostMapping("/pizzas/edit/{id}")
+    public String update(@PathVariable Integer id,@Valid @ModelAttribute Pizza formPizza, BindingResult bindingResult){
+        // se valido la pizza
+        if (bindingResult.hasErrors()) {
+            //se ci sono errori ricarico la pagina con il form
+            return "/pizzas/edit";
+        } else {
+            // recupero la pizza che voglio modificare da db
+            Pizza pizzaToEdit =
+                    pizzaRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+            // se lo trovo modifico solo gli attributi che erano campi del form
+            pizzaToEdit.setName(formPizza.getName());
+            pizzaToEdit.setDescription(formPizza.getDescription());
+            pizzaToEdit.setImageURL(formPizza.getImageURL());
+            pizzaToEdit.setPrice(formPizza.getPrice());
+            // se non ci sono errori salvo la pizza
+            Pizza savedPizza = pizzaRepository.save(pizzaToEdit);
+            return "redirect:/pizzas/show/" + savedPizza.getId();
+        }
+    }
 }
