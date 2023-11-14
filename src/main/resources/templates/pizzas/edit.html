@@ -1,16 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{/fragments/resources :: headResources('Create Pizza')}"></head>
+<head th:insert="~{/fragments/resources :: headResources('Edit Pizza')}"></head>
 <body>
 <nav th:replace="~{fragments/navbar :: topNavbar('pizzas')}"></nav>
 <div class="container">
-    <h1 class="text-danger fw-bolder text-decoration-underline py-4">Crea nuova pizza</h1>
+    <h1 class="text-danger fw-bolder text-decoration-underline py-4">Modifica pizza</h1>
     <hr>
-    <!--<form
-        th:action="@{/pizzas/store}"
+    <form
+        th:action="@{/pizzas/edit/{id}(id=*{id})}"
         th:object="${pizza}"
         method="post"
-        class="row gy-2" novalidate>
+        class="row gy-2"
+        novalidate>
         <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Nome', 'name')}"></div>
         <div class="col-6" th:insert="~{fragments/components :: formField('text', 'URL Immagine', 'imageURL')}"></div>
         <div class="col-6" th:insert="~{fragments/components :: formField('number', 'Prezzo', 'price')}"></div>
@@ -23,7 +24,7 @@
             <button class="btn btn-primary" type="submit">Salva</button>
             <a th:href="@{/books}" class="btn btn-primary">Torna indietro</a>
         </div>
-    </form>-->
+    </form>
 </div>
 </body>
 </html>
