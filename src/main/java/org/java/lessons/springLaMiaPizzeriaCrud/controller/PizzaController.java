@@ -81,7 +81,7 @@ public class PizzaController {
     @GetMapping("/pizzas/create")
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
-        return "pizzas/create";
+        return "pizzas/form";
     }
 
     //metodo post per il create che salva le informazioni del form
@@ -90,7 +90,7 @@ public class PizzaController {
         // validare che i dati siano corretti
         if (bindingResult.hasErrors()){
             // ci sono errori devo ricaricare il form
-            return "pizzas/create";
+            return "pizzas/form";
         }
         // setto il timestamp di creazione
         formPizza.setCreatedAt(LocalDateTime.now());
@@ -108,7 +108,7 @@ public class PizzaController {
             // aggiungo la pizza come attributo del Model
             model.addAttribute("pizza", result.get());
             //proseguo a restituire la pagina di modifica
-            return "/pizzas/edit";
+            return "/pizzas/form";
         } else {
             // sollevo un'eccezione cin HttpStatus 404
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "La pizza con id " + id + " non trovato!");
@@ -121,7 +121,7 @@ public class PizzaController {
         // se valido la pizza
         if (bindingResult.hasErrors()) {
             //se ci sono errori ricarico la pagina con il form
-            return "/pizzas/edit";
+            return "/pizzas/form";
         } else {
             // recupero la pizza che voglio modificare da db
             Pizza pizzaToEdit =
