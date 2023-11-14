@@ -50,9 +50,11 @@
                 </ul>
                 <div class="card-body">
                     <button type="button" class="btn btn-success me-4">
-                        <a th:href="@{/pizzas/show/{id}(id=*{id})}" class="card-link text-white text-decoration-none">Show Details</a>
+                        <a th:href="@{/pizzas/show/{id}(id=*{id})}" class="card-link text-white text-decoration-none">Mostra Dettagli</a>
                     </button>
-                    <a href="#" class="card-link">Another link</a>
+                    <button type="button" class="btn btn-warning me-4">
+                        <a th:href="@{/pizzas/edit/{id}(id=*{id})}" class="card-link text-white text-decoration-none">Modifica</a>
+                    </button>
                 </div>
             </div>
         </div>
