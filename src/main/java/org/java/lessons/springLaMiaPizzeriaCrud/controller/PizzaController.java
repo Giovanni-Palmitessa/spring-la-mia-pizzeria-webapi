@@ -118,7 +118,8 @@ public class PizzaController {
 
     // metodo che riceve il submit del form di edit e salva il libro
     @PostMapping("/pizzas/edit/{id}")
-    public String update(@PathVariable Integer id,@Valid @ModelAttribute Pizza formPizza, BindingResult bindingResult){
+    public String update(@PathVariable Integer id,@Valid @ModelAttribute Pizza formPizza, BindingResult bindingResult
+            , RedirectAttributes redirectAttributes){
         // se valido la pizza
         if (bindingResult.hasErrors()) {
             //se ci sono errori ricarico la pagina con il form
@@ -134,6 +135,8 @@ public class PizzaController {
             pizzaToEdit.setPrice(formPizza.getPrice());
             // se non ci sono errori salvo la pizza
             Pizza savedPizza = pizzaRepository.save(pizzaToEdit);
+            redirectAttributes.addFlashAttribute("message", "La " + savedPizza.getName() + " è stata modificata con " +
+                    "successo");
             return "redirect:/pizzas/show/" + savedPizza.getId();
         }
     }
