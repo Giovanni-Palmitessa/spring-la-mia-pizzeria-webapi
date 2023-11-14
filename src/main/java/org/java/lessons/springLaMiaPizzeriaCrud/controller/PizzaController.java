@@ -97,4 +97,20 @@ public class PizzaController {
         Pizza savedPizza = pizzaRepository.save(formPizza);
         return "redirect:/pizzas/show/" + savedPizza.getId();
     }
+
+    // metodo che mostra la pagina di modifica di un libro
+    @GetMapping("/pizzas/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model){
+        // a partire dall'id recupero i dettagli della Pizza
+        Optional<Pizza> result = pizzaRepository.findById(id);
+        if (result.isPresent()){
+            // aggiungo la pizza come attributo del Model
+            model.addAttribute("pizza", result.get());
+            //proseguo a restituire la pagina di modifica
+            return "/books/edit";
+        } else {
+            // sollevo un'eccezione cin HttpStatus 404
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Il libro con id " + id + " non trovato!");
+        }
+    }
 }
