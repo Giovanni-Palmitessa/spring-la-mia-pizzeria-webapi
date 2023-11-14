@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -134,5 +135,17 @@ public class PizzaController {
             Pizza savedPizza = pizzaRepository.save(pizzaToEdit);
             return "redirect:/pizzas/show/" + savedPizza.getId();
         }
+    }
+
+    // metodo per eliminare la pizza da db
+    @PostMapping("/pizzas/delete/{id}")
+    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes){
+        // recuperiamo la pizza con quell'id
+        Pizza pizzaToDelete =
+                pizzaRepository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        // se esiste lo elimino
+        pizzaRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("message", "La " + pizzaToDelete.getName() + " è stata eliminata!");
+        return "redirect:/pizzas";
     }
 }
