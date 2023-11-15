@@ -135,8 +135,7 @@ public class PizzaController {
             pizzaToEdit.setPrice(formPizza.getPrice());
             // se non ci sono errori salvo la pizza
             Pizza savedPizza = pizzaRepository.save(pizzaToEdit);
-            redirectAttributes.addFlashAttribute("message", "La " + savedPizza.getName() + " è stata modificata con " +
-                    "successo");
+            redirectAttributes.addFlashAttribute("message", "La " + savedPizza.getName() + " è stata modificata con successo!");
             return "redirect:/pizzas/show/" + savedPizza.getId();
         }
     }
