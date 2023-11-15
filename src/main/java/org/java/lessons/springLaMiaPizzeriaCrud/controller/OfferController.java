@@ -46,6 +46,12 @@ public class OfferController {
         // redirect al dettaglio della pizza
         return "redirect:/pizzas/show/" + savedOffer.getPizza().getId();
         }
+    }
 
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model){
+        Offer offer = offerRepository.findById(id).orElseThrow(()->new RuntimeException("L'ordine con id " + id +
+                " non trovato!"));
+        return "offers/form";
     }
 }
