@@ -20,6 +20,10 @@ public class Offer {
     @NotNull
     private String title;
 
+    @NotNull
+    @ManyToOne
+    private Pizza pizza;
+
     //Getter e setter
     public Integer getId() {
         return id;
@@ -51,5 +55,13 @@ public class Offer {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Pizza getPizza() {
+        return pizza;
+    }
+
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
     }
 }
