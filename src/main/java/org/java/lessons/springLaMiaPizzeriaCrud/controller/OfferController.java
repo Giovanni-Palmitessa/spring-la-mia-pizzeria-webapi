@@ -39,10 +39,13 @@ public class OfferController {
         if (bindingResult.hasErrors()) {
             return "offers/form";
         } else {
-
+            // se i dati sono corretti salvo il libro su database
+            Offer savedOffer = offerRepository.save(formOffer);
+            /*redirectAttributes.addFlashAttribute("message", "La " + savedPizza.getName() + " è stata creata con " +
+                    "successo!!");*/
+        // redirect al dettaglio della pizza
+        return "redirect:/pizzas/show/" + savedOffer.getPizza().getId();
         }
 
-    // redirect al dettaglio della pizza
-        return "redirect:/pizzas/show/" + formOffer.getPizza().getId();
     }
 }
