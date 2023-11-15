@@ -32,6 +32,8 @@
         <div>
             <a class="btn btn-warning mt-4" th:href="@{/pizzas/create}">Crea una nuova pizza</a>
         </div>
+
+        <p class="pt-5">Le Pizze in Rosso hanno delle offerte attive!</p>
         <div class="d-flex justify-content-between flex-wrap">
             <!-- Se non presente nessuna pizza mostra messaggio -->
             <th:block th:if="${#lists.isEmpty(pizzaList)}">
