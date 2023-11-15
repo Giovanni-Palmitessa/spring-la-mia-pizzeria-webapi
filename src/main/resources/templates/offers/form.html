@@ -6,6 +6,21 @@
 <div class="container">
     <h1 class="text-danger fw-bolder text-decoration-underline py-4">Crea Offerta</h1>
     <hr>
+    <form
+        th:action="@{/offers/create}"
+        th:object="${offer}"
+        method="post"
+        class="row gy-2"
+        novalidate>
+        <div class="col-12" th:insert="~{fragments/components :: formField('text', 'Titolo Offerta', title')}"></div>
+        <div class="col-6" th:insert="~{fragments/components :: formField('date', 'Data di Inizio', 'startDate')}"></div>
+        <div class="col-6" th:insert="~{fragments/components :: formField('date', 'Data di Fine', 'endDate')}"></div>
+
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Salva</button>
+            <a th:href="@{/pizzas}" class="btn btn-primary">Torna indietro</a>
+        </div>
+    </form>
 
 </div>
 </body>
