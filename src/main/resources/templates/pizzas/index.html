@@ -42,7 +42,7 @@
             <div class="card mx-2 my-5" th:each="pizza : ${pizzaList}" th:object="${pizza}" style="width:380px">
                 <img th:src="*{imageURL}" alt="pizzaIMG" class="card-img-top" style="height:300px">
                 <div class="card-body" style="height:180px">
-                    <h5 th:text="*{name}"></h5>
+                    <h5 th:text="${pizza.name}" th:class="${pizza.hasOffers()} ? 'text-danger' : ''"></h5>
                     <p class="card-text">
                         <span>Descrizione: </span>
                         <span th:text="*{description}"></span>
