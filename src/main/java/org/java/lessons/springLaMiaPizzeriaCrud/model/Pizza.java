@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "pizzas")
@@ -30,6 +32,9 @@ public class Pizza {
     @Min(value = 1, message = "Il prezzo non può essere inferiore a 1 €!")
     private double price;
     private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "book")
+    private List<Offer> offers = new ArrayList<>();
 
     // Getter e setter
     public Integer getId() {
