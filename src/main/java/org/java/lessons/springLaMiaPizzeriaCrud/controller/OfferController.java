@@ -63,9 +63,8 @@ public class OfferController {
             return "offers/form";
         } else {
             Offer savedOffer = offerRepository.save(formOffer);
-            /*savedOffer.setTitle(formOffer.getTitle());
-            savedOffer.setStartDate(formOffer.getStartDate());
-            savedOffer.setEndDate(formOffer.getEndDate());*/
+            redirectAttributes.addFlashAttribute("messageOffer", "L'offerta: " + savedOffer.getTitle() + " è stata " +
+                    "modificata con successo!");
             return "redirect:/pizzas/show/" + savedOffer.getPizza().getId();
         }
     }
