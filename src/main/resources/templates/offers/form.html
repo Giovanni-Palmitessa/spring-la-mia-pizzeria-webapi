@@ -1,14 +1,16 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{/fragments/resources :: headResources('Create Offer')}"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="isEdit=${offer.id != null}">
+<head th:insert="~{/fragments/resources :: headResources(${isEdit ? 'Edit Offer' : 'Create Offer'})}"></head>
 <body>
 <nav th:replace="~{fragments/navbar :: topNavbar('pizzas')}"></nav>
 <div class="container">
-    <h1 class="text-danger fw-bolder text-decoration-underline py-4">Crea Offerta</h1>
+    <h1 th:text="${isEdit ? 'Modifica Offerta' : 'Crea Offerta'}"
+        class="text-danger fw-bolder text-decoration-underline py-4"></h1>
     <h2 th:text="${offer.pizza.name}"></h2>
     <hr>
     <form
-        th:action="@{/offers/create}"
+        th:with="actionUrl=${isEdit ? '/offers/edit/' + offer.id : '/offers/create'}"
+        th:action="@{${actionUrl}}"
         th:object="${offer}"
         method="post"
         class="row gy-2"

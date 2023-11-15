@@ -52,6 +52,7 @@ public class OfferController {
     public String edit(@PathVariable Integer id, Model model){
         Offer offer = offerRepository.findById(id).orElseThrow(()->new RuntimeException("L'ordine con id " + id +
                 " non trovato!"));
+        model.addAttribute("offer", offer);
         return "offers/form";
     }
 }
