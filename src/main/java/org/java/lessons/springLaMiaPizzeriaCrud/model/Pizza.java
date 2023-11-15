@@ -33,7 +33,7 @@ public class Pizza {
     private double price;
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "pizza")
     private List<Offer> offers = new ArrayList<>();
 
     // Getter e setter
