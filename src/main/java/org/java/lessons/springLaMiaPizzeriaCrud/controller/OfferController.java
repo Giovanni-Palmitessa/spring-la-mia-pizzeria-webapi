@@ -55,4 +55,14 @@ public class OfferController {
         model.addAttribute("offer", offer);
         return "offers/form";
     }
+
+    @PostMapping("/edit/{id}")
+    public String update(@PathVariable Integer id, @Valid @ModelAttribute("offer") Offer formOffer,
+                         BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "offers/form";
+        }
+        Offer savedOffer = offerRepository.save(formOffer);
+        return "redirect:/pizzas/show/" + savedOffer.getPizza().getId();
+    }
 }
