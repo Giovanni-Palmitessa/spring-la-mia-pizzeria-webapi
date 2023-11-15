@@ -31,6 +31,40 @@
                 </div>
             </div>
         </div>
+        <!-- Offerte attive -->
+        <section>
+            <h2>Offerte Attive
+                <a th:href="@{/offers/create(pizzaId=*{id})}">
+                    <i class="fa-solid fa-circle-plus"></i>
+                </a>
+            </h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Data di Inizio</th>
+                    <th>Data di Fine</th>
+                    <th>Titolo</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="offer : *{offers}" th:object="${offer}">
+                    <td th:text="*{startDate}"></td>
+                    <td th:text="*{endDate}"></td>
+                    <td th:text="*{title}"></td>
+                    <td>
+                        <a
+                            class="btn btn-primary"
+                            th:href="@{/offers/edit/{id}(id=*{id})}" title="edit">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div th:if="*{offers.size() == 0}" class="alert alert-info">Non ci sono offerte</div>
+        </section>
     </div>
 </body>
 </html>
