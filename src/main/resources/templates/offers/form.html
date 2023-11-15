@@ -5,6 +5,7 @@
 <nav th:replace="~{fragments/navbar :: topNavbar('pizzas')}"></nav>
 <div class="container">
     <h1 class="text-danger fw-bolder text-decoration-underline py-4">Crea Offerta</h1>
+    <h2 th:text="${offer.pizza.name}"></h2>
     <hr>
     <form
         th:action="@{/offers/create}"

@@ -1,6 +1,7 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.controller;
 
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Offer;
+import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,11 @@ public class OfferController {
     PizzaRepository pizzaRepository;;
     @GetMapping("/create")
     public String create(@RequestParam Integer pizzaId, Model model) {
+        Pizza pizza = pizzaRepository.findById(pizzaId).orElseThrow(()->new RuntimeException("La pizza con id " + pizzaId + " non trovato!"));
         Offer offer = new Offer();
         offer.setStartDate(LocalDate.now());
         offer.setEndDate(LocalDate.now().plusMonths(1));
+        offer.setPizza(pizza);
         model.addAttribute("offer", offer);
         return "offers/form";
     }
