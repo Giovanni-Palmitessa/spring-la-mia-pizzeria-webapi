@@ -16,9 +16,9 @@
         <div class="col-6" th:insert="~{fragments/components :: formField('date', 'Data di Inizio', 'startDate')}"></div>
         <div class="col-6" th:insert="~{fragments/components :: formField('date', 'Data di Fine', 'endDate')}"></div>
 
-        <div class="col-12">
-            <button class="btn btn-primary" type="submit">Salva</button>
-            <a th:href="@{/pizzas}" class="btn btn-primary">Torna indietro</a>
+        <div class="col-12 mt-4">
+            <button class="btn btn-success" type="submit">Salva</button>
+            <a th:href="@{/pizzas}" class="btn btn-danger">Torna indietro</a>
         </div>
     </form>
 
