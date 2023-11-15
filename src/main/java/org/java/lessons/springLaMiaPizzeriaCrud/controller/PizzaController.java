@@ -96,7 +96,7 @@ public class PizzaController {
         formPizza.setCreatedAt(LocalDateTime.now());
         // se i dati sono corretti salvo il libro su database
         Pizza savedPizza = pizzaRepository.save(formPizza);
-        redirectAttributes.addFlashAttribute("message", "La " + savedPizza.getName() + " è stata creata con successo!");
+        redirectAttributes.addFlashAttribute("message", "La " + savedPizza.getName() + " è stata creata con " + "successo!!");
         return "redirect:/pizzas/show/" + savedPizza.getId();
     }
 
