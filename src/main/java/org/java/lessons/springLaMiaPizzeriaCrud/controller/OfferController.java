@@ -2,6 +2,7 @@ package org.java.lessons.springLaMiaPizzeriaCrud.controller;
 
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Offer;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
+import org.java.lessons.springLaMiaPizzeriaCrud.repository.OfferRepository;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,11 @@ import java.time.LocalDate;
 @RequestMapping("/offers")
 public class OfferController {
     @Autowired
-    PizzaRepository pizzaRepository;;
+    PizzaRepository pizzaRepository;
+
+    @Autowired
+    OfferRepository offerRepository;
+
     @GetMapping("/create")
     public String create(@RequestParam Integer pizzaId, Model model) {
         Pizza pizza = pizzaRepository.findById(pizzaId).orElseThrow(()->new RuntimeException("La pizza con id " + pizzaId + " non trovato!"));
