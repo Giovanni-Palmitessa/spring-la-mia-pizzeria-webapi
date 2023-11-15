@@ -46,7 +46,7 @@ public class PizzaController {
         model.addAttribute("pizzaList", pizzaList);
         return "pizzas/index";
     }*/
-    public String index(@RequestParam(name = "search") Optional<String> search , Model model) {
+    public String index(@RequestParam Optional<String> search , Model model) {
         List<Pizza> pizzaList;
         // se il parametro di ricerca è presente filtro la lista delle pizze
         if (search.isPresent()) {

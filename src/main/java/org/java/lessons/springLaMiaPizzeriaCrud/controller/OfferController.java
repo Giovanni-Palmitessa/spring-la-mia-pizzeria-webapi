@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
@@ -34,15 +35,15 @@ public class OfferController {
     }
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("offer") Offer formOffer, BindingResult bindingResult){
+    public String store(@Valid @ModelAttribute("offer") Offer formOffer, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         // valido se i dati sono corretti
         if (bindingResult.hasErrors()) {
             return "offers/form";
         } else {
             // se i dati sono corretti salvo il libro su database
             Offer savedOffer = offerRepository.save(formOffer);
-            /*redirectAttributes.addFlashAttribute("message", "La " + savedPizza.getName() + " è stata creata con " +
-                    "successo!!");*/
+            redirectAttributes.addFlashAttribute("messageOffer", "L'offerta: " + savedOffer.getTitle() + " è stata " +
+                    "creata " + "con successo!");
         // redirect al dettaglio della pizza
         return "redirect:/pizzas/show/" + savedOffer.getPizza().getId();
         }
@@ -61,8 +62,12 @@ public class OfferController {
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "offers/form";
+        } else {
+            Offer savedOffer = offerRepository.save(formOffer);
+            /*savedOffer.setTitle(formOffer.getTitle());
+            savedOffer.setStartDate(formOffer.getStartDate());
+            savedOffer.setEndDate(formOffer.getEndDate());*/
+            return "redirect:/pizzas/show/" + savedOffer.getPizza().getId();
         }
-        Offer savedOffer = offerRepository.save(formOffer);
-        return "redirect:/pizzas/show/" + savedOffer.getPizza().getId();
     }
 }
