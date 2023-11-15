@@ -1,5 +1,6 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.controller;
 
+import jakarta.validation.Valid;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Offer;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.OfferRepository;
@@ -7,10 +8,8 @@ import org.java.lessons.springLaMiaPizzeriaCrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -35,7 +34,15 @@ public class OfferController {
     }
 
     @PostMapping("/create")
-    public String store(Offer formOffer){
+    public String store(@Valid @ModelAttribute("offer") Offer formOffer, BindingResult bindingResult){
+        // valido se i dati sono corretti
+        if (bindingResult.hasErrors()) {
+            return "offers/form";
+        } else {
 
+        }
+
+    // redirect al dettaglio della pizza
+        return "redirect:/pizzas/show/" + formOffer.getPizza().getId();
     }
 }

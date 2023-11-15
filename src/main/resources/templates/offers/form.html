@@ -13,6 +13,9 @@
         method="post"
         class="row gy-2"
         novalidate>
+        <!-- Hidden -->
+        <input type="hidden" th:field="*{pizza}">
+        <!--Visible -->
         <div class="col-12" th:insert="~{fragments/components :: formField('text', 'Titolo Offerta', 'title')}"></div>
         <div class="col-6" th:insert="~{fragments/components :: formField('date', 'Data di Inizio', 'startDate')}"></div>
         <div class="col-6" th:insert="~{fragments/components :: formField('date', 'Data di Fine', 'endDate')}"></div>
