@@ -19,7 +19,7 @@
 
         <div class="col-12 mt-4">
             <button class="btn btn-success" type="submit">Salva</button>
-            <a th:href="@{/pizzas}" class="btn btn-danger">Torna indietro</a>
+            <a th:href="@{/pizzas/show/{pizzaId}(pizzaId=*{pizza.id})}" class="btn btn-danger">Torna indietro</a>
         </div>
     </form>
 
