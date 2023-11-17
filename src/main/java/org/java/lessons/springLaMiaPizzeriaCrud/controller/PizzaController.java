@@ -91,10 +91,12 @@ public class PizzaController {
 
     //metodo post per il create che salva le informazioni del form
     @PostMapping("/pizzas/store")
-    public String storePizza(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    public String storePizza(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult,
+                             RedirectAttributes redirectAttributes, Model model){
         // validare che i dati siano corretti
         if (bindingResult.hasErrors()){
             // ci sono errori devo ricaricare il form
+            model.addAttribute("ingredientList", ingredientRepository.findAll());
             return "pizzas/form";
         }
         // setto il timestamp di creazione
