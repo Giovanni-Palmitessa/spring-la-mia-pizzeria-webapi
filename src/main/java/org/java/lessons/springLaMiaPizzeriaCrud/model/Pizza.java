@@ -34,7 +34,7 @@ public class Pizza {
     private LocalDateTime createdAt;
 
     // RELAZIONE ONE TO MANI CON LE OFFERTE
-    @OneToMany(mappedBy = "pizza")
+    @OneToMany(mappedBy = "pizza", orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Offer> offers = new ArrayList<>();
 
     // RELAZIONE MANY TO MANY CON GLI INGREDIENTI
