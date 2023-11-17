@@ -97,6 +97,14 @@ public class Pizza {
         this.offers = offers;
     }
 
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     public boolean hasOffers() {
         return !offers.isEmpty();
     }
