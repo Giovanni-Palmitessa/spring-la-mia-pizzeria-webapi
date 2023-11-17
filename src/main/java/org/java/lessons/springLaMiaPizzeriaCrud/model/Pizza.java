@@ -33,8 +33,13 @@ public class Pizza {
     private double price;
     private LocalDateTime createdAt;
 
+    // RELAZIONE ONE TO MANI CON LE OFFERTE
     @OneToMany(mappedBy = "pizza")
     private List<Offer> offers = new ArrayList<>();
+
+    // RELAZIONE MANY TO MANY CON GLI INGREDIENTI
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Ingredient> ingredients;
 
     // Getter e setter
     public Integer getId() {
