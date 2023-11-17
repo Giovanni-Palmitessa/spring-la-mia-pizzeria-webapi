@@ -1,5 +1,6 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.controller;
 
+import org.java.lessons.springLaMiaPizzeriaCrud.model.Ingredient;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,8 @@ public class IngredientController {
     @GetMapping
     public String index(Model model){
         model.addAttribute("ingredientList", ingredientRepository.findAll());
-        // passa al model una categoria vuota come attributo categoryObj del form
-        model.addAttribute("categoryObj", new Category());
-        return "categories/index";
+        // passo al model un ingrediente vuoto come attributo ingredientObj del form
+        model.addAttribute("ingredientObj", new Ingredient());
+        return "ingredients/index";
     }
 }
