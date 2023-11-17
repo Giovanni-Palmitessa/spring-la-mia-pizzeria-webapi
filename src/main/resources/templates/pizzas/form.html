@@ -14,7 +14,7 @@
         method="post"
         class="row gy-2"
         novalidate>
-        <div class="col-8">
+        <div class="col-9 me-5">
             <div class="row">
                 <div class="col-6" th:insert="~{fragments/components :: formField('text', 'Nome', 'name')}"></div>
                 <div class="col-6" th:insert="~{fragments/components :: formField('text', 'URL Immagine', 'imageURL')}"></div>
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="col-4">
+        <div class="col-2">
             <div class="form-check" th:each="ingredient : ${ingredientList}">
                 <input class="form-check-input" type="checkbox" th:value="${ingredient.id}" th:id="|ingredient_${ingredient.id}|" th:field="*{ingredients}">
                 <label class="form-check-label" th:for="|ingredient_${ingredient.id}|" th:text="${ingredient.name}"></label>
