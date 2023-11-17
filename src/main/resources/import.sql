@@ -4,3 +4,13 @@ INSERT INTO pizzas(created_at, description, imageurl, name, price) VALUES('2023-
 INSERT INTO pizzas(created_at, description, imageurl, name, price) VALUES('2023-11-09 16:15:00', 'Una festa di carni gustose e ben condite per soddisfare i palati più carnivori.', 'https://i1.wp.com/www.piccolericette.net/piccolericette/wp-content/uploads/2017/06/3236_Pizza.jpg?resize=895%2C616&ssl=1', 'Pizza Diavola', 11.00);
 INSERT INTO pizzas(created_at, description, imageurl, name, price) VALUES('2023-11-09 16:15:00', 'Un\'ode al pesto fresco di basilico con il contrasto croccante dei pinoli tostati.', 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/D172A7B2-55FE-4273-8360-D687DC360CBA/Derivates/438dcde2-af18-4ed0-a91d-6dcd8b81c654.jpg', 'Pizza al Pesto', 13.50);
 INSERT INTO pizzas(created_at, description, imageurl, name, price) VALUES('2023-11-09 16:15:00', 'Un viaggio nel cuore del Texas con il sapore affumicato del pollo e la dolcezza della salsa barbecue.', 'https://media-cdn.tripadvisor.com/media/photo-s/0e/38/23/4b/pizza-messicana.jpg', 'Pizza Messicana', 12.50);
+INSERT INTO ingredients(name) VALUES('mozzarella');
+INSERT INTO ingredients(name) VALUES('pomodoro');
+INSERT INTO ingredients(name) VALUES('basilico');
+INSERT INTO ingredients(name) VALUES('pesto');
+INSERT INTO ingredients(name) VALUES('funghi');
+INSERT INTO ingredients(name) VALUES('salsiccia');
+INSERT INTO ingredients(name) VALUES('patatine');
+INSERT INTO ingredients(name) VALUES('salame');
+INSERT INTO ingredients(name) VALUES('bufala');
+INSERT INTO ingredients(name) VALUES('prosciutto cotto');
