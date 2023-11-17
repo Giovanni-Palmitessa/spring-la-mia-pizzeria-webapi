@@ -39,7 +39,7 @@ public class Pizza {
 
     // RELAZIONE MANY TO MANY CON GLI INGREDIENTI
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Ingredient> ingredients;
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     // Getter e setter
     public Integer getId() {
