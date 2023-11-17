@@ -115,6 +115,7 @@ public class PizzaController {
         if (result.isPresent()){
             // aggiungo la pizza come attributo del Model
             model.addAttribute("pizza", result.get());
+            model.addAttribute("ingredientList", ingredientRepository.findAll());
             //proseguo a restituire la pagina di modifica
             return "/pizzas/form";
         } else {
@@ -126,10 +127,11 @@ public class PizzaController {
     // metodo che riceve il submit del form di edit e salva il libro
     @PostMapping("/pizzas/edit/{id}")
     public String update(@PathVariable Integer id,@Valid @ModelAttribute Pizza formPizza, BindingResult bindingResult
-            , RedirectAttributes redirectAttributes){
+            , RedirectAttributes redirectAttributes, Model model){
         // se valido la pizza
         if (bindingResult.hasErrors()) {
             //se ci sono errori ricarico la pagina con il form
+            model.addAttribute("ingredientList", ingredientRepository.findAll());
             return "/pizzas/form";
         } else {
             // recupero la pizza che voglio modificare da db
@@ -140,6 +142,7 @@ public class PizzaController {
             pizzaToEdit.setDescription(formPizza.getDescription());
             pizzaToEdit.setImageURL(formPizza.getImageURL());
             pizzaToEdit.setPrice(formPizza.getPrice());
+            pizzaToEdit.setIngredients(formPizza.getIngredients());
             // se non ci sono errori salvo la pizza
             Pizza savedPizza = pizzaRepository.save(pizzaToEdit);
             redirectAttributes.addFlashAttribute("message", "La " + savedPizza.getName() + " è stata modificata con successo!");
