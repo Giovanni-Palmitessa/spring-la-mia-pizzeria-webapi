@@ -32,6 +32,12 @@
                         <h3 class="card-title fw-bold text-success" th:text="*{name}"></h3>
                         <p class="card-text fw-semibold fs-4" th:text="*{description}"></p>
                         <p class="card-text text-danger fw-semibold fs-5" th:text="'Prezzo: ' + *{price} + ' €'"><small></small></p>
+
+                        <h3>Ingredienti</h3>
+                        <ul th:if="*{ingredients.size() > 0}">
+                            <li th:each="ingredientObj : *{ingredients}" th:text="${ingredientObj.name}"></li>
+                        </ul>
+                        <div th:unless="*{ingredients.size() > 0}" class="alert alert-danger">Nessun Ingrediente</div>
                     </div>
                 </div>
             </div>
