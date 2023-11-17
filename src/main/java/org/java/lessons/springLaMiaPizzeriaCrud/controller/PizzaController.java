@@ -2,6 +2,7 @@ package org.java.lessons.springLaMiaPizzeriaCrud.controller;
 
 import jakarta.validation.Valid;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
+import org.java.lessons.springLaMiaPizzeriaCrud.repository.IngredientRepository;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,9 @@ public class PizzaController {
     // Attributi
     @Autowired
     private PizzaRepository pizzaRepository;
+
+    @Autowired
+    IngredientRepository ingredientRepository;
 
     @GetMapping
     public String home() {
@@ -81,6 +85,7 @@ public class PizzaController {
     @GetMapping("/pizzas/create")
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
+        model.addAttribute("ingredientList", ingredientRepository.findAll());
         return "pizzas/form";
     }
 
