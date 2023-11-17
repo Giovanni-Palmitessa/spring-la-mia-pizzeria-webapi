@@ -36,7 +36,8 @@ public class IngredientController {
             model.addAttribute("ingredientList", ingredientRepository.findAll());
             return "ingredients/index";
         }
-
+        ingredientRepository.save(ingredient);
+        return "redirect:/ingredients";
     }
 
 }
