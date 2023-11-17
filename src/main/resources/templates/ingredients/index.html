@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{/fragments/resources :: headResources('Ingredients')}"></head>
+<body>
+<nav th:replace="~{fragments/navbar :: topNavbar('ingredients')}"></nav>
+<div class="container">
+    <h1 class="text-danger fw-bolder text-decoration-underline mt-4">Ingredienti</h1>
+    <hr>
+    <!--<section class="mb-5">
+        <form
+            id="category-form"
+            th:action="@{/categories}"
+            method="post"
+            th:object="${categoryObj}">
+            <div class="col-12" th:insert="~{fragments/components :: formField('text', 'Category Name', 'name')}"></div>
+            <button class="btn btn-primary mt-3" type="submit">Add category</button>
+        </form>
+    </section>
+    <section>
+        <ul class="list-group">
+            <li
+                class="list-group-item"
+                th:each="category : ${categoryList}"
+                th:text="${category.name}"></li>
+        </ul>
+    </section>-->
+</div>
+</body>
+</html>
