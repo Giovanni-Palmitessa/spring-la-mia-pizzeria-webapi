@@ -65,7 +65,7 @@
                     <td th:text="*{endDate}"></td>
                     <td th:text="*{title}"></td>
                     <td>
-                        <a
+                        <a  sec:authorize="hasAuthority('ADMIN')"
                             class="btn btn-primary"
                             th:href="@{/offers/edit/{id}(id=*{id})}" title="edit">Modifica Offerta
                         </a>
