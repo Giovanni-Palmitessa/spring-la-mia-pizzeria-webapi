@@ -61,4 +61,8 @@ public class DatabaseUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public Integer getId() {
+        return id;
+    }
 }
