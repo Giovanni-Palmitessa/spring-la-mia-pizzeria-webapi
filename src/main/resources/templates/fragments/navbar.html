@@ -24,6 +24,10 @@
                 </li>
             </ul>
         </div>
+        <div>
+            Ciao, <span sec:authentication="name"></span>
+            <a th:href="@{/logout}" class="btn btn-light">Logout</a>
+        </div>
     </div>
 </nav>
 </body>
