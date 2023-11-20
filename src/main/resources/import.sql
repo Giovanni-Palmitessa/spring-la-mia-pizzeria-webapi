@@ -16,3 +16,8 @@ INSERT INTO ingredients(name) VALUES('bufala');
 INSERT INTO ingredients(name) VALUES('prosciutto cotto');
 INSERT INTO roles (id, name) VALUES(1, 'ADMIN');
 INSERT INTO roles (id, name) VALUES(2, 'USER');
+INSERT INTO users (email, first_name, last_name, registered_at, password) VALUES('gino@email.com', 'Gino', 'BuonVino','2023-11-20 14:45', '{noop}gino');
+INSERT INTO users (email, first_name, last_name, registered_at, password) VALUES('bello@email.com', 'Bello', 'FigoGu','2023-11-20 14:45', '{noop}bello');
+INSERT INTO users_roles (user_id, roles_id) VALUES(1, 1);
+INSERT INTO users_roles (user_id, roles_id) VALUES(1, 2);
+INSERT INTO users_roles (user_id, roles_id) VALUES(2, 2);
