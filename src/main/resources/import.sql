@@ -14,3 +14,5 @@ INSERT INTO ingredients(name) VALUES('patatine');
 INSERT INTO ingredients(name) VALUES('salame');
 INSERT INTO ingredients(name) VALUES('bufala');
 INSERT INTO ingredients(name) VALUES('prosciutto cotto');
+INSERT INTO roles (id, name) VALUES(1, 'ADMIN');
+INSERT INTO roles (id, name) VALUES(2, 'USER');
