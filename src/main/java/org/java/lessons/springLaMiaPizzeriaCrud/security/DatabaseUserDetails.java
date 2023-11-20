@@ -1,6 +1,9 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.security;
 
+import org.java.lessons.springLaMiaPizzeriaCrud.model.Role;
+import org.java.lessons.springLaMiaPizzeriaCrud.model.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -13,6 +16,17 @@ public class DatabaseUserDetails implements UserDetails {
     private String username;
     private String password;
     private Set<GrantedAuthority> authorities = new HashSet<>();
+
+    // costruttore che copia da istanza di User i dati che mi servono
+    public DatabaseUserDetails(User user) {
+        this.id = user.getId();
+        this.username = user.getEmail();
+        this.password = user.getPassword();
+        // per ogni ruolo creo una granted authority
+        for (Role role : user.getRoles()) {
+            this.authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.authorities;
