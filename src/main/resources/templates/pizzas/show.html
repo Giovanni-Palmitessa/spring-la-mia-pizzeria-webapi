@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
 <head th:insert="~{/fragments/resources :: headResources('Show')}"></head>
 <body>
 <!--NAVBAR-->
@@ -45,7 +45,7 @@
         <!-- Offerte attive -->
         <section>
             <h2>Offerte Attive
-                <a th:href="@{/offers/create(pizzaId=*{id})}" class="btn btn-primary">
+                <a th:href="@{/offers/create(pizzaId=*{id})}" class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')">
                     Aggiungi Offerta
                 </a>
             </h2>
