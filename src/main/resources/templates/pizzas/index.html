@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org">
 <head th:insert="~{/fragments/resources :: headResources('Index')}"></head>
 <body>
 <!-- NAVBAR -->
@@ -29,7 +29,7 @@
     </div>
 
     <div class="container">
-        <div>
+        <div sec:authorize="hasAuthority('ADMIN')">
             <a class="btn btn-warning mt-4" th:href="@{/pizzas/create}">Crea una nuova pizza</a>
         </div>
 
