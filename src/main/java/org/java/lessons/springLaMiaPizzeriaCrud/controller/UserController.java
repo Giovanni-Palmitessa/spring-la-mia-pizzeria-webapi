@@ -19,8 +19,8 @@ public class UserController {
     public String index(Authentication authentication, Model model) {
         DatabaseUserDetails principal = (DatabaseUserDetails) authentication.getPrincipal();
         User loggedUser = userRepository.findById(principal.getId()).get();
-        model.addAttribute(loggedUser.getFirstName());
-        model.addAttribute(loggedUser.getLastName());
+        model.addAttribute("firstName", loggedUser.getFirstName());
+        model.addAttribute("lastName", loggedUser.getLastName());
         // recupero la lista di users e la passo al model
         return "users/index";
     }

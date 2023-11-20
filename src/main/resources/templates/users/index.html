@@ -4,7 +4,13 @@
 <body>
 <nav th:replace="fragments/navbar :: topNavbar('users')"></nav>
 <div class="container">
-    <h1>Users</h1>
+    <h1 class="my-5">Utenti</h1>
+    <div>
+        <h2>Benvenuto:
+            <span th:text="${firstName}"></span>
+            <span th:text="${lastName}"></span>
+        </h2>
+    </div>
 </div>
 </body>
 </html>
