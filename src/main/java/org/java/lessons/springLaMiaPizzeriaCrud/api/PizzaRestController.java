@@ -19,7 +19,7 @@ public class PizzaRestController {
     PizzaRepository pizzaRepository;
 
     // endpoint per la lista di tutte le pizze
-    public List<Pizza>index(@RequestParam Optional<String> search) {
+    public List<Pizza> index(@RequestParam Optional<String> search) {
         if (search.isPresent()) {
             return pizzaRepository.findByNameContainingIgnoreCase(search.get());
             // altrimenti prendo tutti le pizze non filtrate
