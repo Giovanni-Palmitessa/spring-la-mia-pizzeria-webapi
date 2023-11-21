@@ -55,7 +55,7 @@ public class PizzaController {
         // se il parametro di ricerca è presente filtro la lista delle pizze
         if (search.isPresent()) {
             pizzaList = pizzaRepository.findByNameContainingIgnoreCase(search.get());
-            // altrimenti prendo tutti i libri non filtrati
+            // altrimenti prendo tutte le pizze non filtrati
         } else {
             pizzaList = pizzaRepository.findAll();
         }
