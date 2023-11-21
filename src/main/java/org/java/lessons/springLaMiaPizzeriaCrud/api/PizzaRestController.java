@@ -22,7 +22,7 @@ public class PizzaRestController {
     public List<Pizza>index(@RequestParam Optional<String> search) {
         if (search.isPresent()) {
             return pizzaRepository.findByNameContainingIgnoreCase(search.get());
-            // altrimenti prendo tutti le pizze non filtrati
+            // altrimenti prendo tutti le pizze non filtrate
         } else {
            return pizzaRepository.findAll();
         }
