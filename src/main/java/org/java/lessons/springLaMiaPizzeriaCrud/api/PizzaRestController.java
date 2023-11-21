@@ -1,5 +1,6 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.api;
 
+import jakarta.validation.Valid;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,16 @@ public class PizzaRestController {
             // se non ho trovato la pizza
             // sollevo eccezione
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
+        }
+    }
+
+    // endpoint creazione libro
+    @PostMapping
+    public Pizza create(@Valid @RequestBody Pizza pizza){
+        try {
+            return pizzaRepository.save(pizza);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
 }
