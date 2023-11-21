@@ -56,6 +56,11 @@ public class PizzaRestController {
     // endpoint modifica libro
     @PutMapping("/{id}")
     public Pizza update(@PathVariable Integer id, @Valid @RequestBody Pizza pizza) {
-        pizza.setId(null);
+        pizza.setId(id);
+        try {
+            return pizzaRepository.save(pizza);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
+        }
     }
 }
