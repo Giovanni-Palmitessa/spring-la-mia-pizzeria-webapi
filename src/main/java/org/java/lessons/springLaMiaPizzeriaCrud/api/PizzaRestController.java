@@ -51,7 +51,7 @@ public class PizzaRestController {
     public Pizza create(@Valid @RequestBody Pizza pizza){
         try {
             return pizzaRepository.save(pizza);
-        } catch (Exception e) {
+        } catch (ResponseStatusException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
@@ -60,9 +60,17 @@ public class PizzaRestController {
     @PutMapping("/{id}")
     public Pizza update(@PathVariable Integer id, @Valid @RequestBody Pizza pizza) {
         pizza.setId(id);
-        try {
+        /*try {
             return pizzaRepository.save(pizza);
-        } catch (Exception e) {
+        } catch (ResponseStatusException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
+        }*/
+        Optional<Pizza> result = pizzaRepository.findById(id);
+        if (result.isPresent()) {
+            return pizzaRepository.save(pizza);
+        } else {
+            // se non ho trovato la pizza
+            // sollevo eccezione
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
         }
     }
