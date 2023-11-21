@@ -4,6 +4,9 @@ import jakarta.validation.Valid;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -73,5 +76,10 @@ public class PizzaRestController {
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
         }
+    }
+
+    @GetMapping("/page/v1")
+    public Page<Pizza> pageIndex(@PageableDefault(page = 0, size = 10) Pageable pageable) {
+        return pizzaRepository.findAll(pageable);
     }
 }
