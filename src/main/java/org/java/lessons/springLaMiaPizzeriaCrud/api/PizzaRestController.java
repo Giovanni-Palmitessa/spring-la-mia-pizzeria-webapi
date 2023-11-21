@@ -52,4 +52,10 @@ public class PizzaRestController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
+
+    // endpoint modifica libro
+    @PutMapping("/{id}")
+    public Pizza update(@PathVariable Integer id, @Valid @RequestBody Pizza pizza) {
+        pizza.setId(null);
+    }
 }
