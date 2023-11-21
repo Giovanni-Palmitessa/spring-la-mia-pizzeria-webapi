@@ -63,4 +63,15 @@ public class PizzaRestController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
         }
     }
+
+    // endpoint per cancellare libro
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        try {
+            pizzaRepository.findById(id);
+            pizzaRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
+        }
+    }
 }
