@@ -73,10 +73,18 @@ public class PizzaRestController {
     // endpoint per cancellare libro
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id) {
-        try {
+        /*try {
             pizzaRepository.findById(id);
             pizzaRepository.deleteById(id);
         } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
+        }*/
+        Optional<Pizza> result = pizzaRepository.findById(id);
+        if (result.isPresent()) {
+            pizzaRepository.deleteById(id);
+        } else {
+            // se non ho trovato la pizza
+            // sollevo eccezione
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found!");
         }
     }
