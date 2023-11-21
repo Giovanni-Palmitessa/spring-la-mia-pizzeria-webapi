@@ -3,10 +3,7 @@ package org.java.lessons.springLaMiaPizzeriaCrud.api;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +16,7 @@ public class PizzaRestController {
     PizzaRepository pizzaRepository;
 
     // endpoint per la lista di tutte le pizze
+    @GetMapping
     public List<Pizza> index(@RequestParam Optional<String> search) {
         if (search.isPresent()) {
             return pizzaRepository.findByNameContainingIgnoreCase(search.get());
