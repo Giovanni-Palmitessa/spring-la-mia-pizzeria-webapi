@@ -1,5 +1,6 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -21,6 +22,7 @@ public class Ingredient {
     @Size(max = 50)
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "ingredients")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Pizza> pizzas = new ArrayList<>();
