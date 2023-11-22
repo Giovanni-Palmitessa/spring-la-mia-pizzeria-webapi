@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.URL;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Ingredient;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class PizzaDto {
     private String description;
     @URL(message = "Il link deve essere un URL valido!")
     private String imageURL;
+    private LocalDateTime createdAt;
     @NotNull(message = "Il numero non può essere nullo!")
     @Min(value = 1, message = "Il prezzo non può essere inferiore a 1 €!")
     private double price;
@@ -82,5 +84,13 @@ public class PizzaDto {
 
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

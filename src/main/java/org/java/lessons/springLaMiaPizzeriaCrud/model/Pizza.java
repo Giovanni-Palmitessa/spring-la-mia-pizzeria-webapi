@@ -34,10 +34,6 @@ public class Pizza {
     private double price;
     private LocalDateTime createdAt;
 
-    @Lob
-    @Column(length = 16777215)
-    private Byte[] cover;
-
     // RELAZIONE ONE TO MANI CON LE OFFERTE
     @OneToMany(mappedBy = "pizza", orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonIgnore
@@ -109,14 +105,6 @@ public class Pizza {
 
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
-    }
-
-    public Byte[] getCover() {
-        return cover;
-    }
-
-    public void setCover(Byte[] cover) {
-        this.cover = cover;
     }
 
     public boolean hasOffers() {
