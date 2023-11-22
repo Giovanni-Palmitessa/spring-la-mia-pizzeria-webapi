@@ -1,6 +1,7 @@
 package org.java.lessons.springLaMiaPizzeriaCrud.controller;
 
 import jakarta.validation.Valid;
+import org.java.lessons.springLaMiaPizzeriaCrud.dto.PizzaDto;
 import org.java.lessons.springLaMiaPizzeriaCrud.model.Pizza;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.IngredientRepository;
 import org.java.lessons.springLaMiaPizzeriaCrud.repository.PizzaRepository;
@@ -84,7 +85,7 @@ public class PizzaController {
     // Metodo che mostra il form di creazione della pizza
     @GetMapping("/pizzas/create")
     public String create(Model model) {
-        model.addAttribute("pizza", new Pizza());
+        model.addAttribute("pizza", new PizzaDto());
         model.addAttribute("ingredientList", ingredientRepository.findAll());
         return "pizzas/form";
     }
